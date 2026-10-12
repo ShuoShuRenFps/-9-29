@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 图形悬停效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #1d1b1a;
+            font-family: Arial, "Microsoft YaHei", sans-serif;
+        }
+        .stage {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 56px;
+            padding: 56px 32px;
+        }
+        .cube {
+            width: 170px;
+            height: 170px;
+            position: relative;
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+        /* 悬停时形状中间显示的 "hover" 文字 */
+        .cube::after {
+            content: "hover";
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, .35);
+            opacity: 0;
+            transition: opacity .3s ease;
+        }
+        /* 悬停通用效果：上移 10px */
+        .cube:hover {
+            transform: translateY(-10px);
+        }
+        .cube:hover::after {
+            opacity: 1;
+        }
+
+        /* 1. 橙红渐变正方形 */
+        .c1 {
+            background: linear-gradient(135deg, #ff9a56, #ff5e62);
+            box-shadow: 0 10px 24px rgba(255, 94, 98, .35);
+        }
+        .c1:hover {
+            box-shadow: 0 0 24px rgba(255, 94, 98, .45);
+        }
+
+        /* 2. 绿色圆角正方形 */
+        .c2 {
+            border-radius: 12px;
+            background: linear-gradient(135deg, #3cd6a3, #31c98e);
+            box-shadow: 0 10px 24px rgba(51, 202, 143, .3);
+        }
+        .c2:hover {
+            box-shadow: 0 0 24px rgba(51, 202, 143, .45);
+        }
+
+        /* 3. 浅紫大圆角正方形（竖向渐变） */
+        .c3 {
+            border-radius: 20px;
+            background: linear-gradient(180deg, #a985a5, #85709a);
+            box-shadow: 0 10px 24px rgba(133, 112, 154, .3);
+        }
+        .c3:hover {
+            box-shadow: 0 0 24px rgba(133, 112, 154, .45);
+        }
+
+        /* 4. 黄橙渐变圆形 */
+        .c4 {
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f6d066, #f9b976);
+            box-shadow: 0 10px 24px rgba(249, 185, 118, .3);
+        }
+        .c4:hover {
+            box-shadow: 0 0 24px rgba(249, 185, 118, .45);
+        }
+
+        /* 5. 深绿色圆角正方形 */
+        .c5 {
+            border-radius: 8px;
+            background: linear-gradient(135deg, #4b7b6f, #487075);
+            box-shadow: 0 10px 24px rgba(72, 113, 111, .3);
+        }
+        .c5:hover {
+            box-shadow: 0 0 24px rgba(72, 113, 111, .45);
+        }
+
+        /* 6. 浅紫色圆形 */
+        .c6 {
+            border-radius: 50%;
+            background: linear-gradient(45deg, #9f83ae, #bf96b8);
+            box-shadow: 0 10px 24px rgba(159, 131, 174, .3);
+        }
+        .c6:hover {
+            box-shadow: 0 0 24px rgba(159, 131, 174, .45);
+        }
+    </style>
+</head>
+<body>
+    <div class="stage">
+        <div class="cube c1"></div>
+        <div class="cube c2"></div>
+        <div class="cube c3"></div>
+        <div class="cube c4"></div>
+        <div class="cube c5"></div>
+        <div class="cube c6"></div>
+    </div>
+</body>
+</html>
